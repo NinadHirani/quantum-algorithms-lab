@@ -1,0 +1,13 @@
+name: quantum-algorithms-lab
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - notebook
+  - ipykernel
+  - matplotlib
+  - pylatexenc
+  - pip:
+      - qiskit
+      - qiskit-aer
