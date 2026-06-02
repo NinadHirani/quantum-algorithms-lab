@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player Performance Lab</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="login-view" id="loginView" aria-label="Login">
+        <div class="login-media" aria-hidden="true">
+          <div class="court-grid"></div>
+          <div class="signal-card">
+            <span class="pulse-dot"></span>
+            <p>Live roster intelligence</p>
+            <strong id="loginDate">Today</strong>
+          </div>
+        </div>
+        <form class="login-panel" id="loginForm">
+          <p class="eyebrow">Performance command center</p>
+          <h1>Player Performance Lab</h1>
+          <p class="subtle">
+            Track halves, read the game faster, and surface the top players for the next stretch.
+          </p>
+          <label>
+            Your name
+            <input id="coachNameInput" type="text" placeholder="Ninad" autocomplete="name" required />
+          </label>
+          <label>
+            Team name
+            <input id="teamNameInput" type="text" placeholder="Quantum Strikers" required />
+          </label>
+          <button class="primary-action" type="submit">
+            <i data-lucide="log-in"></i>
+            Enter dashboard
+          </button>
+        </form>
+      </section>
+
+      <section class="dashboard hidden" id="dashboardView" aria-label="Dashboard">
+        <aside class="sidebar">
+          <div class="brand-block">
+            <div class="brand-mark">PL</div>
+            <div>
+              <strong>Performance Lab</strong>
+              <span id="teamNameLabel">Team</span>
+            </div>
+          </div>
+          <nav class="nav-list" aria-label="Sections">
+            <a href="#overview" class="active"><i data-lucide="layout-dashboard"></i>Overview</a>
+            <a href="#players"><i data-lucide="users"></i>Players</a>
+            <a href="#insights"><i data-lucide="sparkles"></i>Insights</a>
+          </nav>
+          <button class="ghost-action" id="resetDemoButton" type="button">
+            <i data-lucide="rotate-ccw"></i>
+            Reset demo data
+          </button>
+        </aside>
+
+        <div class="workspace">
+          <header class="topbar">
+            <div>
+              <p class="eyebrow" id="todayLabel">Today</p>
+              <h2 id="welcomeTitle">Welcome back</h2>
+            </div>
+            <div class="topbar-actions">
+              <button class="icon-action" id="exportButton" type="button" aria-label="Export player data">
+                <i data-lucide="download"></i>
+              </button>
+              <button class="icon-action" id="logoutButton" type="button" aria-label="Log out">
+                <i data-lucide="log-out"></i>
+              </button>
+            </div>
+          </header>
+
+          <section class="metric-grid" id="overview">
+            <article class="metric-card">
+              <span>Team index</span>
+              <strong id="teamIndex">0</strong>
+              <small>Weighted form score</small>
+            </article>
+            <article class="metric-card">
+              <span>Avg efficiency</span>
+              <strong id="avgEfficiency">0</strong>
+              <small>Across recorded halves</small>
+            </article>
+            <article class="metric-card">
+              <span>Best momentum</span>
+              <strong id="bestMomentum">-</strong>
+              <small>Highest recent climb</small>
+            </article>
+            <article class="metric-card">
+              <span>Roster depth</span>
+              <strong id="rosterDepth">0</strong>
+              <small>Players with data</small>
+            </article>
+          </section>
+
+          <section class="content-grid">
+            <article class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Game flow</p>
+                  <h3>Half-by-half production</h3>
+                </div>
+                <div class="segmented-control" role="group" aria-label="Chart mode">
+                  <button class="selected" type="button" data-chart-mode="points">Points</button>
+                  <button type="button" data-chart-mode="efficiency">Efficiency</button>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <canvas id="trendChart"></canvas>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Recommendation engine</p>
+                  <h3>Top 3 for next half</h3>
+                </div>
+                <i data-lucide="badge-check" class="panel-icon"></i>
+              </div>
+              <ol class="recommendation-list" id="recommendationList"></ol>
+            </article>
+          </section>
+
+          <section class="content-grid players-grid" id="players">
+            <form class="panel input-panel" id="halfForm">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Player tracker</p>
+                  <h3>Add half data</h3>
+                </div>
+                <i data-lucide="plus-circle" class="panel-icon"></i>
+              </div>
+              <div class="form-grid">
+                <label>Player<input id="playerName" required placeholder="Player name" /></label>
+                <label>Half<select id="halfNumber"><option>1</option><option>2</option><option>OT</option></select></label>
+                <label>Points<input id="points" type="number" min="0" value="12" /></label>
+                <label>Assists<input id="assists" type="number" min="0" value="4" /></label>
+                <label>Rebounds<input id="rebounds" type="number" min="0" value="5" /></label>
+                <label>Steals<input id="steals" type="number" min="0" value="1" /></label>
+                <label>Turnovers<input id="turnovers" type="number" min="0" value="2" /></label>
+                <label>Fatigue<input id="fatigue" type="range" min="0" max="10" value="4" /></label>
+              </div>
+              <button class="primary-action" type="submit">
+                <i data-lucide="activity"></i>
+                Process half
+              </button>
+            </form>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Roster data</p>
+                  <h3>Player board</h3>
+                </div>
+                <i data-lucide="table-2" class="panel-icon"></i>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Player</th>
+                      <th>Halves</th>
+                      <th>PTS</th>
+                      <th>EFF</th>
+                      <th>Score</th>
+                    </tr>
+                  </thead>
+                  <tbody id="playerTableBody"></tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <section class="content-grid" id="insights">
+            <article class="panel chart-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Skill balance</p>
+                  <h3>Top player profile</h3>
+                </div>
+                <i data-lucide="radar" class="panel-icon"></i>
+              </div>
+              <div class="chart-wrap compact">
+                <canvas id="radarChart"></canvas>
+              </div>
+            </article>
+
+            <article class="panel insight-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Smart notes</p>
+                  <h3>Coaching signals</h3>
+                </div>
+                <i data-lucide="brain" class="panel-icon"></i>
+              </div>
+              <ul class="insight-list" id="insightList"></ul>
+            </article>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

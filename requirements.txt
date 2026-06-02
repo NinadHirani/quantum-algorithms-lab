@@ -4,3 +4,5 @@ matplotlib
 pylatexenc
 notebook
 ipykernel
+nbconvert
+referencing<0.36
