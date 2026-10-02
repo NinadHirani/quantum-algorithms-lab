@@ -1,5 +1,9 @@
 qiskit
 qiskit-aer
+cirq
+pennylane
+numpy
+sympy
 matplotlib
 pylatexenc
 notebook

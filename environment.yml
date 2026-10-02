@@ -6,8 +6,12 @@ dependencies:
   - pip
   - notebook
   - ipykernel
+  - numpy
+  - sympy
   - matplotlib
   - pylatexenc
   - pip:
       - qiskit
       - qiskit-aer
+      - cirq
+      - pennylane

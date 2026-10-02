@@ -50,11 +50,20 @@ simulator = AerSimulator()
 
 ## Notebooks
 
+### `notebooks/01-QuantumAlgo.ipynb`
+First Qiskit circuit: a single-qubit superposition measured on the Aer simulator.
+
+### `notebooks/QISKIT_TEMPLATE.ipynb`
+Blank starting template for a new algorithm notebook (setup, circuit, run, analysis).
+
 ### `notebooks/Python/practice.ipynb`
 Python fundamentals practice notebook with Qiskit environment setup.
 
-### `notebooks/QuantumAlgo/01-Shor.ipynb`
-Implementation and visualization of Shor's algorithm using Qiskit.
+### `notebooks/QuantumAlgo/Shor_Algorithm_Basics.ipynb`
+Step-by-step walkthrough of the classical building blocks of Shor's algorithm (GCD, modular exponentiation, period finding).
+
+### `notebooks/quantumoptimization/qubobypennylane.ipynb`
+QUBO problems mapped to Ising Hamiltonians and solved with a variational circuit in PennyLane.
 
 ## Common Qiskit Patterns
 
