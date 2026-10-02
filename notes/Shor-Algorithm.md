@@ -2,7 +2,7 @@
 
 # Introduction
 
-Shor’s Algorithm is a quantum algorithm developed by mathematician and computer scientist entity["people","Peter Shor","American mathematician and computer scientist"] in 1994. It is designed to factor large integers exponentially faster than the best-known classical algorithms.
+Shor’s Algorithm is a quantum algorithm developed by mathematician and computer scientist Peter Shor in 1994. It is designed to factor large integers exponentially faster than the best-known classical algorithms.
 
 The algorithm became one of the most important discoveries in quantum computing because it showed that quantum computers could theoretically break RSA encryption, which is widely used in cybersecurity.
 
